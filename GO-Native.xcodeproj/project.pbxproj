@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E727EDDA214814380006B19A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E727EDD9214814380006B19A /* CollectionViewCell.swift */; };
+		E727EDFC214829C40006B19A /* BirdAddedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E727EDFB214829C40006B19A /* BirdAddedController.swift */; };
+		E727EDFE2148394D0006B19A /* BirdCollectionTreeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E727EDFD2148394D0006B19A /* BirdCollectionTreeCollectionViewController.swift */; };
 		E7834288214754CA00E760D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7834287214754CA00E760D0 /* AppDelegate.swift */; };
 		E783428A214754CA00E760D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7834289214754CA00E760D0 /* ViewController.swift */; };
 		E783428D214754CA00E760D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E783428B214754CA00E760D0 /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E727EDD9214814380006B19A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		E727EDFB214829C40006B19A /* BirdAddedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdAddedController.swift; sourceTree = "<group>"; };
+		E727EDFD2148394D0006B19A /* BirdCollectionTreeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdCollectionTreeCollectionViewController.swift; sourceTree = "<group>"; };
 		E7834284214754CA00E760D0 /* GO-Native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GO-Native.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7834287214754CA00E760D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7834289214754CA00E760D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +65,9 @@
 				E7834287214754CA00E760D0 /* AppDelegate.swift */,
 				E7834289214754CA00E760D0 /* ViewController.swift */,
 				E783429921476ADB00E760D0 /* AddABirdController.swift */,
+				E727EDD9214814380006B19A /* CollectionViewCell.swift */,
+				E727EDFB214829C40006B19A /* BirdAddedController.swift */,
+				E727EDFD2148394D0006B19A /* BirdCollectionTreeCollectionViewController.swift */,
 				E783428B214754CA00E760D0 /* Main.storyboard */,
 				E783428E214754CB00E760D0 /* Assets.xcassets */,
 				E7834290214754CB00E760D0 /* LaunchScreen.storyboard */,
@@ -139,7 +148,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E783428A214754CA00E760D0 /* ViewController.swift in Sources */,
+				E727EDFE2148394D0006B19A /* BirdCollectionTreeCollectionViewController.swift in Sources */,
+				E727EDFC214829C40006B19A /* BirdAddedController.swift in Sources */,
 				E7834288214754CA00E760D0 /* AppDelegate.swift in Sources */,
+				E727EDDA214814380006B19A /* CollectionViewCell.swift in Sources */,
 				E783429A21476ADB00E760D0 /* AddABirdController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
