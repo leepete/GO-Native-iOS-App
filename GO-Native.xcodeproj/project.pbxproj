@@ -12,6 +12,7 @@
 		E783428D214754CA00E760D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E783428B214754CA00E760D0 /* Main.storyboard */; };
 		E783428F214754CB00E760D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E783428E214754CB00E760D0 /* Assets.xcassets */; };
 		E7834292214754CB00E760D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7834290214754CB00E760D0 /* LaunchScreen.storyboard */; };
+		E783429A21476ADB00E760D0 /* AddABirdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E783429921476ADB00E760D0 /* AddABirdController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E783428E214754CB00E760D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7834291214754CB00E760D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7834293214754CB00E760D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E783429921476ADB00E760D0 /* AddABirdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddABirdController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				E7834287214754CA00E760D0 /* AppDelegate.swift */,
 				E7834289214754CA00E760D0 /* ViewController.swift */,
+				E783429921476ADB00E760D0 /* AddABirdController.swift */,
 				E783428B214754CA00E760D0 /* Main.storyboard */,
 				E783428E214754CB00E760D0 /* Assets.xcassets */,
 				E7834290214754CB00E760D0 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				E783428A214754CA00E760D0 /* ViewController.swift in Sources */,
 				E7834288214754CA00E760D0 /* AppDelegate.swift in Sources */,
+				E783429A21476ADB00E760D0 /* AddABirdController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
