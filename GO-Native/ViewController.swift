@@ -13,9 +13,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Variable to store the image
     var image: UIImage?
 
+    @IBOutlet weak var birdCollection: UICollectionView!
+    @IBOutlet weak var timeToGetExploring: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        birdCollection.backgroundColor = UIColor.clear //transparent background
     }
     
     @IBAction func chooseImage(_ sender: Any) {
@@ -61,6 +66,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismiss(animated: true){
             self.performSegue(withIdentifier: "mainToAddBird", sender: self.image)
         }
+        
+        timeToGetExploring.isHidden = true
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -80,6 +87,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 }
 
