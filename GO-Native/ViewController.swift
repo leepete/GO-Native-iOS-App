@@ -52,10 +52,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //When image chosen, it stores our data in a dictionary
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         //create image object to access dict
-        image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
         self.dismiss(animated: true){
             self.performSegue(withIdentifier: "mainToAddBird", sender: self.image)
         }
@@ -81,3 +83,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
+}

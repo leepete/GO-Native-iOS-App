@@ -30,7 +30,6 @@ benchmarks/graphs
 .idea/workspace.xml
 
 # Xcode
-*.xcodeproj/
 DerivedData/
 build/*
 *.pbxuser

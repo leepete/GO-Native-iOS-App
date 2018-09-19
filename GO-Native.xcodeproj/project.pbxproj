@@ -16,6 +16,7 @@
 		E783428F214754CB00E760D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E783428E214754CB00E760D0 /* Assets.xcassets */; };
 		E7834292214754CB00E760D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7834290214754CB00E760D0 /* LaunchScreen.storyboard */; };
 		E783429A21476ADB00E760D0 /* AddABirdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E783429921476ADB00E760D0 /* AddABirdController.swift */; };
+		E7C12CCA2152033E00B70483 /* BirdInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C12CC92152033E00B70483 /* BirdInfoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E7834291214754CB00E760D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7834293214754CB00E760D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E783429921476ADB00E760D0 /* AddABirdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddABirdController.swift; sourceTree = "<group>"; };
+		E7C12CC92152033E00B70483 /* BirdInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdInfoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				E727EDD9214814380006B19A /* CollectionViewCell.swift */,
 				E727EDFB214829C40006B19A /* BirdAddedController.swift */,
 				E727EDFD2148394D0006B19A /* BirdCollectionTreeCollectionViewController.swift */,
+				E7C12CC92152033E00B70483 /* BirdInfoController.swift */,
 				E783428B214754CA00E760D0 /* Main.storyboard */,
 				E783428E214754CB00E760D0 /* Assets.xcassets */,
 				E7834290214754CB00E760D0 /* LaunchScreen.storyboard */,
@@ -108,6 +111,7 @@
 				TargetAttributes = {
 					E7834283214754CA00E760D0 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -152,6 +156,7 @@
 				E727EDFC214829C40006B19A /* BirdAddedController.swift in Sources */,
 				E7834288214754CA00E760D0 /* AppDelegate.swift in Sources */,
 				E727EDDA214814380006B19A /* CollectionViewCell.swift in Sources */,
+				E7C12CCA2152033E00B70483 /* BirdInfoController.swift in Sources */,
 				E783429A21476ADB00E760D0 /* AddABirdController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +310,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leepete.GO-Native";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -323,7 +328,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leepete.GO-Native";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

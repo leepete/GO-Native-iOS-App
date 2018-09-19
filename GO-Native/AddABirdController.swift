@@ -14,7 +14,7 @@ class AddABirdController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var displayAddedImage: UIImageView!
     var imageView: UIImage!
     
-    @IBOutlet weak var pleaseSelectButton: UIButton!
+    @IBOutlet weak var pleaseSelectButton: UIButton! //may want to parse this in a parameter instead of using it publicly
     
     let collectionImages: [String] = ["tui","kaka","fantail", "pukeko", "silvereye","blackbird","kakariki","kea", "pigeon", "seagull", "sparrow", "woodpigeon"]
     
@@ -72,14 +72,14 @@ class AddABirdController: UIViewController, UICollectionViewDataSource, UICollec
             cell?.layer.borderWidth = 4.0
             cell?.layer.borderColor = UIColor.yellow.cgColor
             
-            pleaseSelectButton.setImage(UIImage(named: "save"), for: UIControlState.normal) //change image
+            pleaseSelectButton.setImage(UIImage(named: "save"), for: UIControl.State.normal) //change image
             pleaseSelectButton.isEnabled = true
             count += 1 //add 1 because we only want to allow 1
         } else{
             cell?.layer.borderWidth = 0.0
             cell?.layer.borderColor = nil
             
-            pleaseSelectButton.setImage(UIImage(named: "nobird"), for: UIControlState.normal) //change image
+            pleaseSelectButton.setImage(UIImage(named: "nobird"), for: UIControl.State.normal) //change image
             pleaseSelectButton.isEnabled = false
             count -= 1 //subtract because it has been deselected
         }
