@@ -49,6 +49,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E73BCC67215A0228007E93C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7CCA5C521529729004505AD /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E73BCC68215A0236007E93C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E727EDD9214814380006B19A /* CollectionViewCell.swift */,
+				E783428B214754CA00E760D0 /* Main.storyboard */,
+				E7834290214754CB00E760D0 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E73BCC69215A023A007E93C5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E727EDFB214829C40006B19A /* BirdAddedController.swift */,
+				E7834289214754CA00E760D0 /* ViewController.swift */,
+				E783429921476ADB00E760D0 /* AddABirdController.swift */,
+				E727EDFD2148394D0006B19A /* BirdCollectionTreeCollectionViewController.swift */,
+				E7834287214754CA00E760D0 /* AppDelegate.swift */,
+				E7C12CC92152033E00B70483 /* BirdInfoController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E783427B214754CA00E760D0 = {
 			isa = PBXGroup;
 			children = (
@@ -68,17 +99,10 @@
 		E7834286214754CA00E760D0 /* GO-Native */ = {
 			isa = PBXGroup;
 			children = (
-				E7834287214754CA00E760D0 /* AppDelegate.swift */,
-				E7CCA5C521529729004505AD /* Model.swift */,
-				E7834289214754CA00E760D0 /* ViewController.swift */,
-				E783429921476ADB00E760D0 /* AddABirdController.swift */,
-				E727EDD9214814380006B19A /* CollectionViewCell.swift */,
-				E727EDFB214829C40006B19A /* BirdAddedController.swift */,
-				E727EDFD2148394D0006B19A /* BirdCollectionTreeCollectionViewController.swift */,
-				E7C12CC92152033E00B70483 /* BirdInfoController.swift */,
-				E783428B214754CA00E760D0 /* Main.storyboard */,
+				E73BCC67215A0228007E93C5 /* Model */,
+				E73BCC68215A0236007E93C5 /* View */,
+				E73BCC69215A023A007E93C5 /* Controller */,
 				E783428E214754CB00E760D0 /* Assets.xcassets */,
-				E7834290214754CB00E760D0 /* LaunchScreen.storyboard */,
 				E7834293214754CB00E760D0 /* Info.plist */,
 				E7CE5EB3215271E000289731 /* birdsInfo.json */,
 			);
