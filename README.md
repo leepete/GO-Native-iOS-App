@@ -10,7 +10,7 @@ An app my team and I made to engage kids with the environment, finding New Zeala
 <a href="url"><img src="DesignConcepts/birdInfo.png" align="left"  ></a>
 <a href="url"><img src="DesignConcepts/finalTree.png" align="left"></a>&nbsp;
 
-### More Info
+###
 It's like Pokemon GO but with Birds!
 
 We initially made it in JavaScript but I ported the app myself to iOS.
