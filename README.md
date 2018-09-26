@@ -12,7 +12,7 @@ We initially made it in JavaScript but I ported the app myself to iOS.
 <a href="url"><img src="DesignConcepts/imageSelect.png" align="left"  ></a>
 <a href="url"><img src="DesignConcepts/birdCollected.png" align="left"  ></a>
 <a href="url"><img src="DesignConcepts/birdInfo.png" align="left"  ></a>
-<a href="url"><img src="DesignConcepts/finalTree.png" align="left"></a
+<a href="url"><img src="DesignConcepts/finalTree.png" align="left"></a>
 
 ## Credits 
 
