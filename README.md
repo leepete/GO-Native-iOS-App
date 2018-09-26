@@ -3,7 +3,7 @@
 An app my team and I made to engage kids with the environment, finding New Zealand native birds @ Create Camp 2018 (previously known as Hackfest).
 
 ### Images
-<p><a href="url"><img src="DesignConcepts/homeScreen.png" align="left" ></a>
+<a href="url"><img src="DesignConcepts/homeScreen.png" align="left" ></a>
 <a href="url"><img src="DesignConcepts/cameraRoll.png" align="left"  ></a>
 <a href="url"><img src="DesignConcepts/imageSelect.png" align="left"  ></a>
 <a href="url"><img src="DesignConcepts/birdCollected.png" align="left"  ></a>
