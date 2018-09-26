@@ -14,6 +14,15 @@ It's like Pokemon GO but with Birds!
 
 We initially made it in JavaScript but I ported the app myself to iOS.
 
-Designs by [Kate Bennett](https://katydesign.co/projects)
+## Credits - Create Camp Team 2018 - Bird Nerds
+
+### Developers
+* Peter Lee
+* Tu Dinh
+* Abigail Lieshout
+* Carla Weiss
+
+### Design
+* [Kate Bennett](https://katydesign.co/projects)
 
 Our concept video: https://youtu.be/bahKq9MTpak
