@@ -3,12 +3,12 @@
 An app my team and I made to engage kids with the environment, finding New Zealand native birds @ Create Camp 2018 (previously known as Hackfest).
 
 ### Images
-![Alt text](DesignConcepts/homeScreen.png)
-![Alt text](DesignConcepts/cameraRoll.png)
-![Alt text](DesignConcepts/imageSelect.png)
-![Alt text](DesignConcepts/birdCollected.png)
-![Alt text](DesignConcepts/birdInfo.png)
-![Alt text](DesignConcepts/finalTree.png)
+<p><a href="url"><img src="DesignConcepts/homeScreen.png" align="left" ></a>
+<a href="url"><img src="DesignConcepts/cameraRoll.png" align="left"  ></a>
+<a href="url"><img src="DesignConcepts/imageSelect.png" align="left"  ></a>
+<a href="url"><img src="DesignConcepts/birdCollected.png" align="left"  ></a>
+<a href="url"><img src="DesignConcepts/birdInfo.png" align="left"  ></a>
+<a href="url"><img src="DesignConcepts/finalTree.png" align="left"></a>&nbsp;
 
 It's like Pokemon GO but with Birds!
 
