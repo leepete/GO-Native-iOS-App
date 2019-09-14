@@ -6,14 +6,9 @@
 //  Copyright © 2018 Peter Lee. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class Model{
-    
-}
-
-struct birdInfo : Decodable{
+struct Bird : Decodable{
     let birdName : String
     let maoriName : String
     let description: String
