@@ -1,4 +1,15 @@
-# GO-Native iOS app - (A working iOS concept)
+# GO-Native iOS app - (Currently being re-visited)  
+> "It's like Pokemon GO but with Birds!"
+
+## As of 14/9/19
+
+- Will be re-coded without the use of storyboards and making better improvements than before
+
+## Info
+
+An app we made to engage kids with the environment, finding New Zealand native birds @ Summer of Tech, Wellington Create Camp 2018.
+
+Re-coded in Swift by me.  
 
 ### Images
 ![Alt text](DesignConcepts/homeScreen.png)
@@ -6,16 +17,19 @@
 ![Alt text](DesignConcepts/imageSelect.png)
 ![Alt text](DesignConcepts/birdCollected.png)
 ![Alt text](DesignConcepts/birdInfo.png)
-![Alt text](DesignConcepts/finalTree.png)
+![Alt text](DesignConcepts/finalTree.png)  
 
-### Info
+## Credits to my cool team that I got to work this idea with
 
-An app my team and I made to engage kids with the environment, finding New Zealand native birds @ Create Camp 2018 (previously known as Hackfest).
+### Create Camp Team 2018 - Bird Nerds
 
-It's like Pokemon GO but with Birds!
+#### Developers
+* Peter Lee
+* Tu Dinh
+* Abigail Lieshout
+* Carla Weiss
 
-We initially made it in JavaScript but I ported the app myself to iOS.
-
-Designs by [Kate Bennett](https://katydesign.co/projects)
+#### Design
+* Kate Bennett
 
 Our concept video: https://youtu.be/bahKq9MTpak
