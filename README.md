@@ -1,7 +1,5 @@
 # GO-Native iOS app - (A working iOS concept)
 
-An app my team and I made to engage kids with the environment, finding New Zealand native birds @ Create Camp 2018 (previously known as Hackfest).
-
 ### Images
 ![Alt text](DesignConcepts/homeScreen.png)
 ![Alt text](DesignConcepts/cameraRoll.png)
@@ -9,6 +7,10 @@ An app my team and I made to engage kids with the environment, finding New Zeala
 ![Alt text](DesignConcepts/birdCollected.png)
 ![Alt text](DesignConcepts/birdInfo.png)
 ![Alt text](DesignConcepts/finalTree.png)
+
+### Info
+
+An app my team and I made to engage kids with the environment, finding New Zealand native birds @ Create Camp 2018 (previously known as Hackfest).
 
 It's like Pokemon GO but with Birds!
 
