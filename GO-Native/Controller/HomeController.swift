@@ -21,7 +21,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return background
     }()
     
-    private let addBirdButton : UIButton = {
+    private let addBirdButton : UIButton = { //TODO
         let add = UIButton()
         add.setBackgroundImage(UIImage(named:"add_button"), for: .normal)
         return add
@@ -36,43 +36,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.register(BirdCell.self, forCellWithReuseIdentifier: cellId)
         
-        // Get access to the data
-        fetchBirds{(getBird) -> () in
+        // Get access to the Data Model
+        BirdInventory.fetchBirds{(getBird) -> () in
             self.birdObjects = getBird
             self.collectionView?.reloadData()
         }
-    }
-    
-    // Parses JSON File
-    func fetchBirds(completionHandler: @escaping ([Bird]) -> ()){
-        guard let jsonUrlString = Bundle.main.path(forResource: "birdsInfo", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: jsonUrlString)
-        
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-                if let err = err {
-                    print("Failed to retrieve data from file:" , err)
-                    return
-                }
-                
-                guard let data = data else { return }
-                
-                do {
-                    let birds = try JSONDecoder().decode([Bird].self, from: data)
-                    
-                    var birdObjects = [Bird]()
-                    
-                    for bird in birds {
-                        let obj = Bird(birdName: bird.birdName, maoriName: bird.maoriName, description: bird.description, rarity: bird.rarity, type: bird.type)
-                        birdObjects.append(obj) // add to list of objects
-                    }
-                    
-                    DispatchQueue.main.async {
-                        completionHandler(birdObjects) // completion handler when done
-                    }
-                } catch let jsonErr {
-                    print("Error serializing json:", jsonErr)
-                }
-        }.resume()
     }
     
     // Number of Cells
@@ -82,7 +50,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     // Manage data within cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BirdCell
+        cell.birdInstance = birdObjects[indexPath.item] //get the cell instance and set/send it to the birdObjects that were retrieved
         return cell
     }
     

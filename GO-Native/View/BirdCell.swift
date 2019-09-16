@@ -8,6 +8,8 @@
 
 import UIKit
 
+//May need a UIView to encase the CollectionViewCell..
+
 class BirdCell: UICollectionViewCell {
     
     private let birdImage: UIImageView = {
@@ -19,15 +21,30 @@ class BirdCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let birdName: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Tui", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(red: 255/255, green: 205/255, blue: 0/255, alpha: 1.0)
-        button.tintColor = .black // font colour
-        button.clipsToBounds = true // allow rounding
-        return button
+    private let birdName: UITextView = {
+        let name = UITextView()
+        name.isEditable = false // disable editing
+        name.textAlignment = .center
+        name.translatesAutoresizingMaskIntoConstraints = false
+        name.backgroundColor = UIColor(red: 255/255, green: 205/255, blue: 0/255, alpha: 1.0)
+        name.tintColor = .black // font colour
+        name.clipsToBounds = true // allow rounding
+        return name
     }()
+    
+    var birdInstance: Bird? {
+        didSet{
+            if let imageName = birdInstance?.birdName {
+                birdImage.image = UIImage(named: imageName.lowercased())
+            }
+            
+            if let name = birdInstance?.birdName, let maori = birdInstance?.maoriName{
+                birdName.text = "\(name)\n\(maori)"
+            } else {
+                birdName.text = ""
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

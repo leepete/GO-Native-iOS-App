@@ -12,7 +12,7 @@
 		E7AC7B1F232CEEFA00269808 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC7B1E232CEEFA00269808 /* HomeController.swift */; };
 		E7AC7B24232CF2A600269808 /* BirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC7B23232CF2A600269808 /* BirdCell.swift */; };
 		E7AC7B26232D1E9000269808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AC7B25232D1E9000269808 /* LaunchScreen.storyboard */; };
-		E7CCA5C621529729004505AD /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CCA5C521529729004505AD /* Bird.swift */; };
+		E7CCA5C621529729004505AD /* BirdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CCA5C521529729004505AD /* BirdModel.swift */; };
 		E7CE5EB4215271E000289731 /* birdsInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = E7CE5EB3215271E000289731 /* birdsInfo.json */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,7 @@
 		E7AC7B1E232CEEFA00269808 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		E7AC7B23232CF2A600269808 /* BirdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdCell.swift; sourceTree = "<group>"; };
 		E7AC7B25232D1E9000269808 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E7CCA5C521529729004505AD /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
+		E7CCA5C521529729004505AD /* BirdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdModel.swift; sourceTree = "<group>"; };
 		E7CE5EB3215271E000289731 /* birdsInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = birdsInfo.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,7 +42,7 @@
 		E73BCC67215A0228007E93C5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E7CCA5C521529729004505AD /* Bird.swift */,
+				E7CCA5C521529729004505AD /* BirdModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -91,8 +91,7 @@
 				E7AC7B23232CF2A600269808 /* BirdCell.swift */,
 				E7AC7B25232D1E9000269808 /* LaunchScreen.storyboard */,
 			);
-			name = View;
-			path = Controller/View;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +168,7 @@
 			files = (
 				E7834288214754CA00E760D0 /* AppDelegate.swift in Sources */,
 				E7AC7B24232CF2A600269808 /* BirdCell.swift in Sources */,
-				E7CCA5C621529729004505AD /* Bird.swift in Sources */,
+				E7CCA5C621529729004505AD /* BirdModel.swift in Sources */,
 				E7AC7B1F232CEEFA00269808 /* HomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
