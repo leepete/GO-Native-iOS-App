@@ -13,9 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window =  UIWindow(frame: UIScreen.main.bounds) // a window to hold view controllers
+        window?.makeKeyAndVisible()
+        
+        let layout = UICollectionViewFlowLayout()
+        
+        window?.rootViewController =  UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
+        
+        UINavigationBar.appearance().barTintColor = UIColor(red: 102/255, green: 153/255, blue: 51/255, alpha: 1.0) // change navbar background colour
+        UINavigationBar.appearance().titleTextAttributes =  [NSAttributedString.Key.foregroundColor: UIColor.white] // change title colour
+        
         return true
     }
 
