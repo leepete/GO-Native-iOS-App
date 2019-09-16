@@ -12,6 +12,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     let cellId = "cellId"
     
+    var birdObjects = [Bird]()
+    
     private let backgroundImage : UIImageView = {
        let background = UIImageView()
         background.image = UIImage(named: "tree_background")
@@ -19,11 +21,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return background
     }()
     
-    private let addBirdButtom : UIButton = {
+    private let addBirdButton : UIButton = {
         let add = UIButton()
+        add.setBackgroundImage(UIImage(named:"add_button"), for: .normal)
         return add
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +35,52 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.backgroundView = backgroundImage
         
         collectionView?.register(BirdCell.self, forCellWithReuseIdentifier: cellId)
+        
+        // Get access to the data
+        fetchBirds{(getBird) -> () in
+            self.birdObjects = getBird
+            self.collectionView?.reloadData()
+        }
+    }
+    
+    // Parses JSON File
+    func fetchBirds(completionHandler: @escaping ([Bird]) -> ()){
+        guard let jsonUrlString = Bundle.main.path(forResource: "birdsInfo", ofType: "json") else { return }
+        let url = URL(fileURLWithPath: jsonUrlString)
+        
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+                if let err = err {
+                    print("Failed to retrieve data from file:" , err)
+                    return
+                }
+                
+                guard let data = data else { return }
+                
+                do {
+                    let birds = try JSONDecoder().decode([Bird].self, from: data)
+                    
+                    var birdObjects = [Bird]()
+                    
+                    for bird in birds {
+                        let obj = Bird(birdName: bird.birdName, maoriName: bird.maoriName, description: bird.description, rarity: bird.rarity, type: bird.type)
+                        birdObjects.append(obj) // add to list of objects
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completionHandler(birdObjects) // completion handler when done
+                    }
+                } catch let jsonErr {
+                    print("Error serializing json:", jsonErr)
+                }
+        }.resume()
     }
     
     // Number of Cells
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return birdObjects.count
     }
     
-    // Manage data within cfell
+    // Manage data within cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         return cell
@@ -71,4 +111,5 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
+
 }
