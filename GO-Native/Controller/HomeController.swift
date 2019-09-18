@@ -45,6 +45,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
         navigationItem.title = "My Tree"
         
+        setupNavbarButtons()
         setupLayout()
         
         // Register bird cells
@@ -72,12 +73,13 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
     // Width of the cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2) / 3 // "2" to account for the vertical spaces (pixels)
-        return CGSize(width: width, height: width + (width/3))
+        let height = width + (width/3)
+        return CGSize(width: width, height: height)
     }
     
     //Horizontal Line spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0
     }
    
     // Vertical Line spacing between cells
@@ -95,6 +97,33 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
     
+    
+    func setupNavbarButtons() {
+        let progressBar = UIImage(named: "progressbar")?.withRenderingMode(.alwaysOriginal) //TODO: Make it a proper working one
+        let progressBarButtonItem = UIBarButtonItem(image: progressBar, style:.plain, target: self, action: #selector(openUserProfile))
+    
+        navigationItem.leftBarButtonItem = progressBarButtonItem
+        
+        let treeImage = UIImage(named: "tree")?.withRenderingMode(.alwaysOriginal) // Rendering mode removes blue hue
+        let treeBarButtonItem = UIBarButtonItem(image: treeImage, style: .plain, target: self, action: #selector(goHome))
+        let plusImage = UIImage(named: "plus_button")?.withRenderingMode(.alwaysOriginal)
+        let plusBarButtonItem = UIBarButtonItem(image: plusImage, style: .plain, target: self, action: #selector(addPhoto))
+        
+        navigationItem.rightBarButtonItems = [treeBarButtonItem, plusBarButtonItem].reversed()
+    }
+    
+    @objc func goHome() {
+        print("HOME")
+    }
+    
+    @objc func addPhoto() {
+        print("ADDING QR CODE/PHOTO")
+    }
+    
+    @objc func openUserProfile(){
+        print("OPENED USER INFO")
+    }
+    
     private func setupLayout(){
         view.addSubview(backgroundImage)
         view.sendSubviewToBack(backgroundImage)
@@ -110,10 +139,9 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
         
         addBirdButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 0).isActive = true
-        addBirdButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        addBirdButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        addBirdButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
+        addBirdButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
     }
+    
 
 }

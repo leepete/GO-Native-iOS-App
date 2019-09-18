@@ -13,21 +13,21 @@ class BirdCell: UICollectionViewCell {
     private let birdImage: UIImageView = {
         let imageView = UIImageView(image:#imageLiteral(resourceName: "tui"))
         imageView.translatesAutoresizingMaskIntoConstraints = false // Enable autolayout
-        imageView.clipsToBounds = true // allow rounding
+        imageView.clipsToBounds = true
         imageView.layer.borderWidth = 3.0
         imageView.layer.borderColor = UIColor.white.cgColor
         return imageView
     }()
     
-    private let birdName: UITextView = {
-        let name = UITextView()
-        name.isEditable = false // disable editing
-        name.textAlignment = .center
+    private let birdName: UILabel = {
+        let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
-        name.backgroundColor = UIColor(red: 255/255, green: 205/255, blue: 0/255, alpha: 1.0)
+        name.backgroundColor = UIColor.rgb(red: 255, green: 205, blue: 0)
         name.tintColor = .black // font colour
-        name.clipsToBounds = true // allow rounding
-        name.isScrollEnabled = false
+        name.sizeToFit()
+        name.numberOfLines = 0 // allows line break
+        name.textAlignment = .center
+        name.clipsToBounds = true
         return name
     }()
     
@@ -37,10 +37,27 @@ class BirdCell: UICollectionViewCell {
                 birdImage.image = UIImage(named: imageName.lowercased())
             }
             
-            if let name = birdInstance?.birdName, let maori = birdInstance?.maoriName{
-                birdName.text = "\(name)\n\(maori)"
-            } else {
-                birdName.text = ""
+            if let name = birdInstance?.birdName{
+                let mutableAttributedString = NSMutableAttributedString()
+                let boldAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)]
+                let italicAttribute = [NSAttributedString.Key.font: UIFont.italicSystemFont(ofSize: 12)]
+                
+                let boldAttributedString = NSAttributedString(string: name, attributes: boldAttribute)
+                
+                mutableAttributedString.append(boldAttributedString)
+                
+                // Check if this optional (maori name) is empty or not
+                guard let maori = birdInstance?.maoriName, !maori.isEmpty else {
+                    // if string is empty
+                    birdName.attributedText = mutableAttributedString
+                    return
+                }
+                let italicAttributedString = NSAttributedString(string: maori, attributes: italicAttribute)
+                
+                mutableAttributedString.append(NSAttributedString(string: "\n"))
+                mutableAttributedString.append(italicAttributedString)
+                
+                birdName.attributedText = mutableAttributedString
             }
         }
     }
@@ -57,23 +74,25 @@ class BirdCell: UICollectionViewCell {
     
     private func setupLayout(){
         addSubview(birdImage)
-        addSubview(birdName)
 
         // Center Image
         birdImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        // Adjust Width and Height of Image
+        // Adjust Width and Height of Image - Make them the same lengths
         birdImage.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
-        birdImage.heightAnchor.constraint(equalToConstant: self.bounds.height - (self.bounds.height/4)).isActive = true
+        birdImage.heightAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
         birdImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         birdImage.layer.cornerRadius = self.bounds.width / 2 // Make it Round
         
+        addSubview(birdName)
+        
         // Anchor Name below Image
         birdName.topAnchor.constraint(equalTo: birdImage.bottomAnchor, constant: 5).isActive = true
-        // Width and Height
-        birdName.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
+        birdName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
+        birdName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
+        birdName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0 ).isActive = true
         birdName.heightAnchor.constraint(equalToConstant: (self.bounds.height/4) - 5).isActive = true // consider anchor constant
         birdName.layer.cornerRadius = self.bounds.width / 10 // Make it Round
-        
+
         
     }
 }
