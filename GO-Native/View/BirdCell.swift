@@ -8,8 +8,6 @@
 
 import UIKit
 
-//May need a UIView to encase the CollectionViewCell..
-
 class BirdCell: UICollectionViewCell {
     
     private let birdImage: UIImageView = {
@@ -29,6 +27,7 @@ class BirdCell: UICollectionViewCell {
         name.backgroundColor = UIColor(red: 255/255, green: 205/255, blue: 0/255, alpha: 1.0)
         name.tintColor = .black // font colour
         name.clipsToBounds = true // allow rounding
+        name.isScrollEnabled = false
         return name
     }()
     

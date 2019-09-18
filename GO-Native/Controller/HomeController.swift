@@ -8,23 +8,36 @@
 
 import UIKit
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
+
+class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     let cellId = "cellId"
     
     var birdObjects = [Bird]()
     
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
+    
     private let backgroundImage : UIImageView = {
-       let background = UIImageView()
+        let background = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         background.image = UIImage(named: "tree_background")
         background.contentMode = .scaleAspectFill
         return background
     }()
     
     private let addBirdButton : UIButton = { //TODO
-        let add = UIButton()
-        add.setBackgroundImage(UIImage(named:"add_button"), for: .normal)
-        return add
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named:"add_button"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override func viewDidLoad() {
@@ -32,24 +45,25 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         navigationItem.title = "My Tree"
         
-        collectionView?.backgroundView = backgroundImage
+        setupLayout()
         
-        collectionView?.register(BirdCell.self, forCellWithReuseIdentifier: cellId)
-        
+        // Register bird cells
+        collectionView.register(BirdCell.self, forCellWithReuseIdentifier: cellId)
+
         // Get access to the Data Model
         BirdInventory.fetchBirds{(getBird) -> () in
             self.birdObjects = getBird
-            self.collectionView?.reloadData()
+            self.collectionView.reloadData()
         }
     }
     
     // Number of Cells
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return birdObjects.count
     }
     
     // Manage data within cell
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BirdCell
         cell.birdInstance = birdObjects[indexPath.item] //get the cell instance and set/send it to the birdObjects that were retrieved
         return cell
@@ -79,6 +93,27 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let right = CGFloat((view.frame.width / 5) / 2)
         
         return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+    }
+    
+    private func setupLayout(){
+        view.addSubview(backgroundImage)
+        view.sendSubviewToBack(backgroundImage)
+        
+        view.addSubview(collectionView)
+        
+        view.addSubview(addBirdButton)
+        
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.widthAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: view.bounds.height - (view.bounds.height/6)).isActive = true
+        collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        
+        addBirdButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 0).isActive = true
+        addBirdButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        addBirdButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        addBirdButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
+        
     }
 
 }

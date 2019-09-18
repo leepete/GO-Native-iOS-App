@@ -20,9 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window =  UIWindow(frame: UIScreen.main.bounds) // a window to hold view controllers
         window?.makeKeyAndVisible()
         
-        let layout = UICollectionViewFlowLayout()
-        
-        window?.rootViewController =  UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
+        window?.rootViewController =  UINavigationController(rootViewController: HomeController())
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 102/255, green: 153/255, blue: 51/255, alpha: 1.0) // change navbar background colour
         UINavigationBar.appearance().titleTextAttributes =  [NSAttributedString.Key.foregroundColor: UIColor.white] // change title colour
