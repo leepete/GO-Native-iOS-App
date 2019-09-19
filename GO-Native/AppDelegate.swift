@@ -24,10 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 102, green: 153, blue: 51) // change navbar background colour
         UINavigationBar.appearance().titleTextAttributes =  [NSAttributedString.Key.foregroundColor: UIColor.white] // change title colour
-       
-        application.statusBarStyle = .lightContent
-        
-        
         
         return true
     }

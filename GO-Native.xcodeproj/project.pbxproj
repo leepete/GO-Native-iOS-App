@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E735C0B6233304060023AB16 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E735C0B5233304060023AB16 /* CameraController.swift */; };
+		E735C0B823338A930023AB16 /* AddBirdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E735C0B723338A930023AB16 /* AddBirdController.swift */; };
+		E735C0BA233390EC0023AB16 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E735C0B9233390EC0023AB16 /* BaseViewController.swift */; };
 		E7834288214754CA00E760D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7834287214754CA00E760D0 /* AppDelegate.swift */; };
 		E783428F214754CB00E760D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E783428E214754CB00E760D0 /* Assets.xcassets */; };
 		E7AC7B1F232CEEFA00269808 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC7B1E232CEEFA00269808 /* HomeController.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E735C0B5233304060023AB16 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		E735C0B723338A930023AB16 /* AddBirdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBirdController.swift; sourceTree = "<group>"; };
+		E735C0B9233390EC0023AB16 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E7834284214754CA00E760D0 /* GO-Native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GO-Native.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7834287214754CA00E760D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E783428E214754CB00E760D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,7 +90,10 @@
 		E7AC7B21232CF22200269808 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E735C0B9233390EC0023AB16 /* BaseViewController.swift */,
 				E7AC7B1E232CEEFA00269808 /* HomeController.swift */,
+				E735C0B5233304060023AB16 /* CameraController.swift */,
+				E735C0B723338A930023AB16 /* AddBirdController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,9 +186,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E735C0B823338A930023AB16 /* AddBirdController.swift in Sources */,
+				E735C0B6233304060023AB16 /* CameraController.swift in Sources */,
 				E7B1EE4123325D810066AAA7 /* Extensions.swift in Sources */,
 				E7834288214754CA00E760D0 /* AppDelegate.swift in Sources */,
 				E7AC7B24232CF2A600269808 /* BirdCell.swift in Sources */,
+				E735C0BA233390EC0023AB16 /* BaseViewController.swift in Sources */,
 				E7CCA5C621529729004505AD /* BirdModel.swift in Sources */,
 				E7AC7B1F232CEEFA00269808 /* HomeController.swift in Sources */,
 			);

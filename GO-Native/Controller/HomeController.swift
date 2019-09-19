@@ -9,7 +9,7 @@
 import UIKit
 
 
-class HomeController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+class HomeController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     let cellId = "cellId"
     
@@ -45,7 +45,6 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         
         navigationItem.title = "My Tree"
         
-        setupNavbarButtons()
         setupLayout()
         
         // Register bird cells
@@ -97,34 +96,7 @@ class HomeController: UIViewController, UICollectionViewDataSource, UICollection
         return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
     
-    
-    func setupNavbarButtons() {
-        let progressBar = UIImage(named: "progressbar")?.withRenderingMode(.alwaysOriginal) //TODO: Make it a proper working one
-        let progressBarButtonItem = UIBarButtonItem(image: progressBar, style:.plain, target: self, action: #selector(openUserProfile))
-    
-        navigationItem.leftBarButtonItem = progressBarButtonItem
-        
-        let treeImage = UIImage(named: "tree")?.withRenderingMode(.alwaysOriginal) // Rendering mode removes blue hue
-        let treeBarButtonItem = UIBarButtonItem(image: treeImage, style: .plain, target: self, action: #selector(goHome))
-        let plusImage = UIImage(named: "plus_button")?.withRenderingMode(.alwaysOriginal)
-        let plusBarButtonItem = UIBarButtonItem(image: plusImage, style: .plain, target: self, action: #selector(addPhoto))
-        
-        navigationItem.rightBarButtonItems = [treeBarButtonItem, plusBarButtonItem].reversed()
-    }
-    
-    @objc func goHome() {
-        print("HOME")
-    }
-    
-    @objc func addPhoto() {
-        print("ADDING QR CODE/PHOTO")
-    }
-    
-    @objc func openUserProfile(){
-        print("OPENED USER INFO")
-    }
-    
-    private func setupLayout(){
+    private func setupLayout() {
         view.addSubview(backgroundImage)
         view.sendSubviewToBack(backgroundImage)
         
