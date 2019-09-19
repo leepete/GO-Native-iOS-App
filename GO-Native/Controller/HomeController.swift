@@ -33,7 +33,7 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
         return background
     }()
     
-    private let addBirdButton : UIButton = { //TODO
+    private let addBirdButton : UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named:"add_button"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +47,9 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
         
         setupLayout()
         
+        // Make Bird Button work
+        addBirdButton.addTarget(self, action: #selector(addPhotoAlert), for: .touchUpInside)
+        
         // Register bird cells
         collectionView.register(BirdCell.self, forCellWithReuseIdentifier: cellId)
 
@@ -55,6 +58,7 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
             self.birdObjects = getBird
             self.collectionView.reloadData()
         }
+    
     }
     
     // Number of Cells
@@ -97,20 +101,23 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
     }
     
     private func setupLayout() {
+        for subview in self.view.subviews {
+            // find the base background and remove it
+            if(subview.restorationIdentifier == "background") {
+                subview.removeFromSuperview()
+            }
+        }
+        
         view.addSubview(backgroundImage)
         view.sendSubviewToBack(backgroundImage)
         
         view.addSubview(collectionView)
-        
         view.addSubview(addBirdButton)
         
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.widthAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: view.bounds.height - (view.bounds.height/6)).isActive = true
+        collectionView.anchor(top: view.topAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: view.bounds.width, height: view.bounds.height - (view.bounds.height/6))
         collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        
-        addBirdButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 0).isActive = true
+        addBirdButton.anchor(top: collectionView.bottomAnchor, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
         addBirdButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
     }

@@ -11,9 +11,20 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    
+    private let backgroundImage : UIImageView = {
+        let background = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        background.image = UIImage(named: "nature_background")
+        background.contentMode = .scaleAspectFill
+        background.restorationIdentifier = "background"; // tag this view
+        return background
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(backgroundImage)
+
         setupNavButtons()
     }
     
@@ -38,9 +49,11 @@ class BaseViewController: UIViewController {
     
     @objc func addPhoto() {
         print("ADDING QR CODE/PHOTO")
+         self.navigationController?.pushViewController(AddBirdController(), animated: true) // TEMP
+    }
+    @objc func addPhotoAlert() { // TEMP
+        print("ADDING QR CODE/PHOTO")
         self.setupAlertController()
-
-//                present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
     }
     
     @objc func openUserProfile() {

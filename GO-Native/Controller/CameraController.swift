@@ -38,24 +38,21 @@ class CameraController: UIViewController {
         print("Capturing Photo")
     }
     
-    @objc func handleDismiss() {
+    @objc func handleDismiss() { //TODO: Make animation transition
         dismiss(animated: true, completion: nil)
     }
     
     
     private func setupHUD() {
         view.addSubview(dismissButton)
-        dismissButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12).isActive = true
-        dismissButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12).isActive = true
-        dismissButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        dismissButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        dismissButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 12, bottom: nil, paddingBottom: 0, left: view.safeAreaLayoutGuide.leftAnchor, paddingLeft: 12, right: nil, paddingRight: 0, width: 20, height: 30)
         
         view.addSubview(capturePhotoButton)
+        
+        capturePhotoButton.anchor(top: nil, paddingTop: 0, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 24, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 80, height: 80)
         capturePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        capturePhotoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24).isActive = true
         capturePhotoButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0) // Padding
-        capturePhotoButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        capturePhotoButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
     fileprivate func setupCaptureSession() {
