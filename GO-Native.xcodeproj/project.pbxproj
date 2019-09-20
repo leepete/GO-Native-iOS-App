@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72B54A42334FCBA005DD8E0 /* BirdAddedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B54A32334FCBA005DD8E0 /* BirdAddedController.swift */; };
 		E735C0B6233304060023AB16 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E735C0B5233304060023AB16 /* CameraController.swift */; };
 		E735C0B823338A930023AB16 /* AddBirdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E735C0B723338A930023AB16 /* AddBirdController.swift */; };
 		E735C0BA233390EC0023AB16 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E735C0B9233390EC0023AB16 /* BaseViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E72B54A32334FCBA005DD8E0 /* BirdAddedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdAddedController.swift; sourceTree = "<group>"; };
 		E735C0B5233304060023AB16 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		E735C0B723338A930023AB16 /* AddBirdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBirdController.swift; sourceTree = "<group>"; };
 		E735C0B9233390EC0023AB16 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				E7AC7B1E232CEEFA00269808 /* HomeController.swift */,
 				E735C0B5233304060023AB16 /* CameraController.swift */,
 				E735C0B723338A930023AB16 /* AddBirdController.swift */,
+				E72B54A32334FCBA005DD8E0 /* BirdAddedController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E735C0B823338A930023AB16 /* AddBirdController.swift in Sources */,
+				E72B54A42334FCBA005DD8E0 /* BirdAddedController.swift in Sources */,
 				E7C738392334ADF00011E89A /* HeaderView.swift in Sources */,
 				E735C0B6233304060023AB16 /* CameraController.swift in Sources */,
 				E7B1EE4123325D810066AAA7 /* Extensions.swift in Sources */,

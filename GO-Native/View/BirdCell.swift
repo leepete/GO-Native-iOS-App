@@ -12,7 +12,6 @@ class BirdCell: UICollectionViewCell {
     
     fileprivate let birdImage: UIImageView = {
         let imageView = UIImageView(image:#imageLiteral(resourceName: "tui"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false // Enable autolayout
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 3.0
         imageView.layer.borderColor = UIColor.white.cgColor
@@ -21,7 +20,6 @@ class BirdCell: UICollectionViewCell {
     
     fileprivate let birdName: UILabel = {
         let name = UILabel()
-        name.translatesAutoresizingMaskIntoConstraints = false
         name.backgroundColor = UIColor.rgb(red: 255, green: 205, blue: 0)
         name.tintColor = .black // font colour
         name.sizeToFit()
@@ -35,6 +33,7 @@ class BirdCell: UICollectionViewCell {
         didSet{
             if let imageName = birdInstance?.birdName {
                 birdImage.image = UIImage(named: imageName.lowercased())
+                
             }
             
             if let name = birdInstance?.birdName{
@@ -84,7 +83,7 @@ class BirdCell: UICollectionViewCell {
         
         addSubview(birdName)
         birdName.layer.cornerRadius = width / 10 // Make it Round
-        birdName.anchor(top: birdImage.bottomAnchor, paddingTop: 5, bottom: self.bottomAnchor, paddingBottom: 0, left: self.leftAnchor, paddingLeft: 5, right: self.rightAnchor, paddingRight: 5, width: 0, height: (height/4) - 5)
+        birdName.anchor(top: birdImage.bottomAnchor, paddingTop: 5, bottom: nil, paddingBottom: 0, left: self.leftAnchor, paddingLeft: 5, right: self.rightAnchor, paddingRight: 5, width: 0, height: (height/4) - 5)
 
         
     }

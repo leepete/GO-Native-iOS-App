@@ -81,12 +81,11 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
     
     // Vertical Line spacing between cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SelectBirdCell
-//        cell.backgroundColor = .red
         cell.birdInstance = birdObjects[indexPath.item]
         return cell
     }
@@ -124,8 +123,9 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
         collectionView.anchor(top: geotagMap.bottomAnchor, paddingTop: outsidePadding - (outsidePadding/3), bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: outsidePadding, right: view.rightAnchor, paddingRight: outsidePadding, width: width, height: height/2)
         collectionView.layer.cornerRadius = 15
 
-        selectButton.anchor(top: collectionView.bottomAnchor, paddingTop: 0, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: 0, height: 0)
-        selectButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        selectButton.anchor(top: collectionView.bottomAnchor, paddingTop: 0, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: view.rightAnchor, paddingRight: 0, width: 0, height: 0)
+
+
 
         
     }
