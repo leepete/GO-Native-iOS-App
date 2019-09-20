@@ -10,7 +10,7 @@ import UIKit
 
 class BirdCell: UICollectionViewCell {
     
-    private let birdImage: UIImageView = {
+    fileprivate let birdImage: UIImageView = {
         let imageView = UIImageView(image:#imageLiteral(resourceName: "tui"))
         imageView.translatesAutoresizingMaskIntoConstraints = false // Enable autolayout
         imageView.clipsToBounds = true
@@ -19,7 +19,7 @@ class BirdCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let birdName: UILabel = {
+    fileprivate let birdName: UILabel = {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.backgroundColor = UIColor.rgb(red: 255, green: 205, blue: 0)
@@ -73,26 +73,48 @@ class BirdCell: UICollectionViewCell {
     }
     
     private func setupLayout(){
+        let width = self.bounds.width
+        let height = self.bounds.height
+        
         addSubview(birdImage)
 
-        // Center Image
         birdImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        // Adjust Width and Height of Image - Make them the same lengths
-        birdImage.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
-        birdImage.heightAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
-        birdImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        birdImage.layer.cornerRadius = self.bounds.width / 2 // Make it Round
+        birdImage.layer.cornerRadius = width / 2 // Make it Round
+        birdImage.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: width, height: width)
         
         addSubview(birdName)
-        
-        // Anchor Name below Image
-        birdName.topAnchor.constraint(equalTo: birdImage.bottomAnchor, constant: 5).isActive = true
-        birdName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
-        birdName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
-        birdName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0 ).isActive = true
-        birdName.heightAnchor.constraint(equalToConstant: (self.bounds.height/4) - 5).isActive = true // consider anchor constant
-        birdName.layer.cornerRadius = self.bounds.width / 10 // Make it Round
+        birdName.layer.cornerRadius = width / 10 // Make it Round
+        birdName.anchor(top: birdImage.bottomAnchor, paddingTop: 5, bottom: self.bottomAnchor, paddingBottom: 0, left: self.leftAnchor, paddingLeft: 5, right: self.rightAnchor, paddingRight: 5, width: 0, height: (height/4) - 5)
 
         
+    }
+}
+
+// This class is for the AddBirdController CollectionViewCell
+
+class SelectBirdCell: BirdCell {
+    override var birdInstance: Bird? {
+        didSet{
+            if let imageName = birdInstance?.birdName {
+                let width = self.bounds.width
+                
+                birdImage.image = UIImage(named: imageName.lowercased())
+                birdImage.anchor(top: nil, paddingTop: 0, bottom: nil, paddingBottom: 0, left: nil, paddingLeft: 0, right: nil, paddingRight: 0, width: width/2, height: width/2)
+                birdImage.layer.cornerRadius = width/4
+    
+            }
+            
+            if let name = birdInstance?.birdName{
+                let mutableAttributedString = NSMutableAttributedString()
+                let boldAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)]
+                let boldAttributedString = NSAttributedString(string: name, attributes: boldAttribute)
+                
+                mutableAttributedString.append(boldAttributedString)
+                birdName.attributedText = mutableAttributedString
+        
+                birdName.backgroundColor = .clear
+                birdName.font = UIFont.boldSystemFont(ofSize: 12)
+            }
+        }
     }
 }

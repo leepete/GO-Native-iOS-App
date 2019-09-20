@@ -11,7 +11,7 @@ import UIKit
 
 class HomeController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
-    let cellId = "cellId"
+    fileprivate let cellId = "cellId"
     
     var birdObjects = [Bird]()
     
@@ -21,7 +21,6 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -36,7 +35,6 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
     private let addBirdButton : UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named:"add_button"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
