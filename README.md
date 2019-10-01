@@ -16,9 +16,10 @@
 ## Info
 
 An app made to help engage kids with the environment by collecting/finding New Zealand native birds outside and learning about them.  
+
 This idea was first created at Summer of Tech Create Camp 2018, and I was inspired to keep going with the idea and attempt to making something out of it.
 
-I coded it up in Swift (no use of storyboards).
+I coded it up in **Swift** (no use of storyboards).
 
 ### Images
 ![Alt text](DesignConcepts/homeScreen.png)
