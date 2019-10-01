@@ -99,7 +99,7 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
                     completionHandler(allBirds) // completion handler when done
                 }
             } catch let err {
-                print("Error: ", err)
+                print("Error reading from database", err)
           }
         })
     }

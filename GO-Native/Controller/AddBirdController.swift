@@ -99,20 +99,19 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
             "name": postName,
             "details": postDetails!
         ]
-        
-        print(post)
-        
-        
+       
         // Firebase Write
         ref = Database.database().reference()
         ref?.child("birds").childByAutoId().setValue(post)
     }
     
     func changeCell(cells: UICollectionViewCell) {
+        let selectedColor = UIColor.rgb(red: 247, green: 186, blue: 0).cgColor
+        
         for cell in cells.subviews {
             if cell is UIImageView {
-                if cell.layer.borderColor != UIColor.yellow.cgColor { //if it isn't selected
-                    cell.layer.borderColor = UIColor.yellow.cgColor
+                if cell.layer.borderColor != selectedColor { //if it isn't selected
+                    cell.layer.borderColor = selectedColor
                 } else {
                     cell.layer.borderColor = UIColor.white.cgColor
                 }
@@ -130,7 +129,6 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
             changeCell(cells: cell)
             isSelected = true
             savedBird = cell.birdInstance
-            print(cell)
         }
         // Enable button when at least been touched once
         selectButton.setImage(UIImage(named: "save"), for: .normal)
