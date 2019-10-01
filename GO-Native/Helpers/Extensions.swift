@@ -24,32 +24,34 @@ extension UINavigationController {
 extension UIViewController {
     func setupAlertController() {
         let action = UIAlertController(title: "How would you like to add your bird?", message: "", preferredStyle: .actionSheet)
-        action.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { action in self.useCamera()}))
+        action.addAction(UIAlertAction(title: "Use Camera", style: .default, handler: { action in self.useCamera()}))
         action.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { action in self.addFromCameraRoll()}))
-        action.addAction(UIAlertAction(title: "Scan QR Code", style: .default, handler: { action in self.addFromQRCode()}))
         action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(action, animated: true, completion: nil)
     }
     
     func useCamera() {
         let cameraController = CameraController()
+        cameraController.modalPresentationStyle = .fullScreen
         present(cameraController, animated: true, completion: nil)
     }
     
     func addFromCameraRoll() {
-        
-    }
-    
-    func addFromQRCode() {
-        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.savedPhotosAlbum) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.modalPresentationStyle = .fullScreen
+            imagePicker.sourceType = UIImagePickerController.SourceType.savedPhotosAlbum
+            imagePicker.allowsEditing = true
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
 }
 
 extension UIView {
-    // Thanks to Brian Voong (www.letsbuildtheapp.com) for this extension
     
-    func anchor(top: NSLayoutYAxisAnchor?, paddingTop: CGFloat, bottom: NSLayoutYAxisAnchor?, paddingBottom: CGFloat, left: NSLayoutXAxisAnchor?, paddingLeft: CGFloat, right: NSLayoutXAxisAnchor?, paddingRight: CGFloat, width: CGFloat, height: CGFloat) {
-        
+    func anchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat,
+                paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat) {
+
         translatesAutoresizingMaskIntoConstraints = false
         
         if let top = top {
@@ -69,6 +71,17 @@ extension UIView {
         }
         if height != 0 {
             heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+    }
+    
+    func center(x: NSLayoutXAxisAnchor?, paddingX: CGFloat, y: NSLayoutYAxisAnchor?, paddingY: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        if let centerX = x {
+            centerXAnchor.constraint(equalTo: centerX, constant: paddingX).isActive = true
+        }
+        if let centerY = y {
+            centerYAnchor.constraint(equalTo: centerY, constant: paddingY).isActive = true
         }
     }
 }

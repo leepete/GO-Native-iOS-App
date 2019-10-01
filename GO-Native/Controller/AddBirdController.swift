@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AddBirdController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    var ref: DatabaseReference?
     
     fileprivate let cellId = "cellId"
     fileprivate let headerId = "headerId"
     
     var birdObjects = [Bird]()
     
+    var receivedImage: UIImage?
+    var isSelected: Bool = false
+    var savedBird: Bird?
+    
     private let birdImage: UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "tui"))
-        image.clipsToBounds = true
+        let image = UIImageView()
+        image.layer.masksToBounds = true
         image.layer.borderWidth = 5.0
         image.layer.borderColor = UIColor.white.cgColor
         return image
@@ -26,7 +33,7 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
     // Currently a static image - TOFIX
     private let geotagMap: UIImageView = {
         let image = UIImageView(image: #imageLiteral(resourceName: "geomap"))
-        image.clipsToBounds = true
+        image.layer.masksToBounds = true
         image.layer.borderWidth = 5.0
         image.layer.borderColor = UIColor.white.cgColor
         return image
@@ -35,7 +42,7 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.rgb(red: 235, green: 235, blue: 235)
+        collectionView.backgroundColor = UIColor.rgb(red: 239, green: 239, blue: 239)
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
@@ -44,6 +51,7 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
     private let selectButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "nobird"), for: .normal)
+        button.isUserInteractionEnabled = false
         return button
     }()
     
@@ -52,6 +60,7 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
         super.viewDidLoad()
         
         navigationItem.title = "Add a Bird"
+        birdImage.image = receivedImage
         
         setupLayout()
         
@@ -59,14 +68,81 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
         // Get access to the Data Model
-        BirdInventory.fetchBirds{(getBird) -> () in
-            self.birdObjects = getBird
+        LocalDatabase.fetchBirds{(getBird) -> () in
+            self.birdObjects = getBird //doesnt work
             self.collectionView.reloadData()
+        }
+        
+        selectButton.addTarget(self, action: #selector(saveSelection), for: .touchUpInside)
+    }
+    
+    @objc func saveSelection() {
+        let nextViewController = BirdAddedController()
+        nextViewController.birdInstance = savedBird
+        
+        postToFirebase()
+        
+        navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    func postToFirebase() {
+        let postName = savedBird!.name!
+        var postDetails: [String: Any]!
+        var postStats: [String: String]!
+        
+        if let i = savedBird!.details {
+            postStats = ["type": i.stats!.type!, "status": i.stats!.status!, "habitat": i.stats!.habitat!]
+            postDetails = ["maoriName": i.maoriName!, "stats": postStats!, "description": i.description!]
+        }
+
+        let post: [String: Any] = [
+            "name": postName,
+            "details": postDetails!
+        ]
+        
+        print(post)
+        
+        
+        // Firebase Write
+        ref = Database.database().reference()
+        ref?.child("birds").childByAutoId().setValue(post)
+    }
+    
+    func changeCell(cells: UICollectionViewCell) {
+        for cell in cells.subviews {
+            if cell is UIImageView {
+                if cell.layer.borderColor != UIColor.yellow.cgColor { //if it isn't selected
+                    cell.layer.borderColor = UIColor.yellow.cgColor
+                } else {
+                    cell.layer.borderColor = UIColor.white.cgColor
+                }
+            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return birdObjects.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! SelectBirdCell
+        if !isSelected {
+            changeCell(cells: cell)
+            isSelected = true
+            savedBird = cell.birdInstance
+            print(cell)
+        }
+        // Enable button when at least been touched once
+        selectButton.setImage(UIImage(named: "save"), for: .normal)
+        selectButton.isUserInteractionEnabled = true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! SelectBirdCell
+        if isSelected {
+           changeCell(cells: cell)
+            isSelected = false
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -81,7 +157,7 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
     
     // Vertical Line spacing between cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 24
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -114,20 +190,16 @@ class AddBirdController: BaseViewController, UICollectionViewDataSource, UIColle
         view.addSubview(collectionView)
         view.addSubview(selectButton)
         
-        birdImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: outsidePadding, bottom: nil, paddingBottom: 0, left: view.safeAreaLayoutGuide.leftAnchor, paddingLeft: outsidePadding, right: nil, paddingRight: 0, width: 130, height: 130)
+        birdImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: nil, paddingTop: outsidePadding, paddingLeft: outsidePadding, paddingBottom: 0, paddingRight: 0, width: 130, height: 130)
         birdImage.layer.cornerRadius = 130 / 2
         
-        geotagMap.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: outsidePadding, bottom: nil, paddingBottom: 0, left: birdImage.rightAnchor, paddingLeft: 8, right: view.rightAnchor, paddingRight: outsidePadding, width: 150, height: 130)
+        geotagMap.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: birdImage.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: outsidePadding,paddingLeft: 8, paddingBottom: 0, paddingRight: outsidePadding, width: 150, height: 130)
         geotagMap.layer.cornerRadius = 15
         
-        collectionView.anchor(top: geotagMap.bottomAnchor, paddingTop: outsidePadding - (outsidePadding/3), bottom: nil, paddingBottom: 0, left: view.leftAnchor, paddingLeft: outsidePadding, right: view.rightAnchor, paddingRight: outsidePadding, width: width, height: height/2)
+        collectionView.anchor(top: geotagMap.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: outsidePadding - (outsidePadding/3), paddingLeft: outsidePadding, paddingBottom: 0, paddingRight: outsidePadding, width: width, height: height/2)
         collectionView.layer.cornerRadius = 15
 
-        selectButton.anchor(top: collectionView.bottomAnchor, paddingTop: 0, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 0, left: view.leftAnchor, paddingLeft: 0, right: view.rightAnchor, paddingRight: 0, width: 0, height: 0)
-
-
-
-        
+        selectButton.anchor(top: collectionView.bottomAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
 

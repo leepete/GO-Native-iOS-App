@@ -1,0 +1,160 @@
+{
+  "birds": [
+      {
+        "name": "Tui",
+        "details": {
+        "maoriName": "T\u016Bī",
+           "stats":
+             {
+              "type": "Native",
+              "status": "Not Threatened",
+              "habitat": "Flowers and Fruit"
+          },
+        "description": "T\u016Bī are unique to New Zealand and belong to the honeyeater family, which means they feed mainly on nectar from flowers of native plants.\nCan be locally abundant where there is good pest control and in flowering or fruiting habitat."
+        }
+      },
+      {
+        "name": "Wood Pigeon",
+        "details": {
+        "maoriName": "Kerer\u016b",
+        "stats":
+          {
+            "type": "Native",
+            "status": "Not Threatened",
+            "habitat": "Forests"
+          },
+        "description": "The Kerer\u016b is a large bird with irridescent green and bronze feathers on its head and a smart white vest. The noisy beat of its wings is a distinctive sound in our forests."
+        }
+      },
+    {
+        "name": "Kakariki",
+        "details": {
+        "maoriName": "K\u0101k\u0101riki",
+        "stats":
+          {
+              "type": "Native",
+              "status": "Nationally Critical",
+              "habitat": "Forest and Islands"
+          },
+        "description": "K\u0101k\u0101riki meaning \u2019small green parrot\u2019 in Māori, are beautiful forest birds. They are also known as the New Zealand Parakeet.\nThey feed on berries, seeds, fruit and insects, and generally nest in holes in trees. It is not unusual to see kākāriki foraging on the ground."
+        }
+    },
+    {
+      "name": "Kaka",
+      "details": {
+        "maoriName": "K\u0101k\u0101",
+        "stats":
+          {
+              "type": "Native",
+              "status": "Recovering",
+              "habitat": "Large Forests"
+          },
+        "description": "The K\u0101k\u0101 is a large parrot belonging to the nestorinae family, a group that includes the kea and the extinct Norfolk Island K\u0101k\u0101.\nK\u0101k\u0101 are mainly actove during the day but can be active at night during fine weather or a full moon."
+      }
+    },
+    {
+      "name": "Blackbird",
+      "details": {
+      "maoriName": "",
+        "stats":
+          {
+            "type": "Common",
+            "status": "Introduced",
+            "habitat": "Gardens, Woods and Farmland"
+          },
+        "description": "Introduced from Europe between the 1860s and the 1970s, the blackbird is a relatively common bird you can see outside.\nAdult males are entirely black apart from their yellow bill and eye-ring. Females and juveniles are mostly dark brown, slightly mottled on the belly."
+      }
+    },
+    {
+        "name": "Kea",
+        "details": {
+        "maoriName": "",
+           "stats":
+             {
+              "type": "Native",
+              "status": "Nationally Endangered",
+              "habitat": "Alpine and Forest"
+          },
+        "description": "The endangered Kea is the world's only alpine parrot, and one of the most intelligent birds. Innately curious, kea are attracted to people wherever they enter its mountain domain, and are a feature at South Island ski-fields and mountain huts.\nTheir attraction to people and their paraphernalia is a two-edged sword, providing both new threats and new opportunities."
+        }
+    },
+    {
+      "name": "Pigeon",
+      "details": {
+      "maoriName": "",
+      "stats":
+        {
+            "type": "Common",
+            "status": "Intoduced",
+            "habitat": "Urban and Rural"
+        },
+      "description": "The pigeon, also known as Rock Pigeon is a bird you would see commonly in urban cities, and regularly be picking up food near humans or nesting near footpaths.\nIt is a gregarious species, often roosting, commuting and foraging in flocks."
+      }
+    },
+    {
+      "name": "Pukeko",
+      "details": {
+      "maoriName": "P\u016Bkeko",
+      "stats":
+        {
+            "type": "Native",
+            "status": "Not Threatened",
+            "habitat": "Near sheltered fresh or brackish water"
+        },
+      "description": "The P\u016Bkeko is one of the most recognised native birds in New Zealand with its distinctive colourings and habit of feeding on the ground.\nP\u016Bkeko live in permanent social groups and defend a shared territory that is used for both feeding and breeding. Social groups can have multiple breeding males and females, but all eggs are laid in a single nest and the group offspring are raised by all group members"
+      }
+    },
+    {
+      "name": "Fantail",
+      "details": {
+        "maoriName": "P\u012bwakawaka",
+        "stats":
+          {
+            "type": "Native",
+            "status": "Not Threatened",
+            "habitat": "Forests and Shrubland"
+          },
+        "description": "Known for its friendly \u2018cheet cheet\u2019 call and energetic flying antics, the aptly named fantail is one of the most common and widely distributed native birds on the New Zealand mainland."
+      }
+    },
+    {
+        "name": "Red-billed Gull",
+        "details": {
+        "maoriName": "Tar\u0101punga",
+          "stats":
+            {
+            "type": "Native",
+            "status": "Declining",
+            "habitat": "Coastal, Inland and Islands"
+          },
+        "description": "The red-billed gull is the commonest gull on the New Zealand coast. Immature adults are often confused with the closely related black-billed gull.\n The bird tends to nest at the same locality from one season to the next, and offspring mostly return to their natal colony to breed."
+        }
+    },
+    {
+      "name": "Silvereye",
+      "details": {
+      "maoriName": "Tauhou",
+      "stats":
+        {
+            "type": "Native",
+            "status": "Not Threatened",
+            "habitat": "Forests, Gardens, Fruit and Farmland"
+        },
+      "description": "Also known as the Wax-Eye, Silvereye\u0027s are small songbirds that are easily recognised by their conspicuous white eye-ring\u003b their plumage is mainly olive-green above and cream below.\nIt is an active, mobile species that moves about frequently, including making sea crossings."
+      }
+    },
+    {
+      "name": "Sparrow",
+      "details": {
+      "maoriName": "Tiu",
+      "stats":
+        {
+            "type": "Common",
+            "status": "Introduced",
+            "habitat": "Everywhere"
+        },
+      "description": "First introduced in New Zealand in the mid 1860s. Sparrows have made their own way to offshore islands, breeding on those with human habitation. These common little birds enjoy worms, flowers and fruit."
+      }
+    }
+  ]
+}

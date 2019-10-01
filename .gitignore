@@ -12,12 +12,16 @@ Desktop.ini
 .directory
 *~
 
+# Firebase
+.idea
+Pods/
+Podfile.lock
+**/node_modules/*
+**/.firebaserc
 
-# npm
-node_modules
-package-lock.json
-*.log
-*.gz
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
 
 
 # Coveralls
@@ -25,9 +29,6 @@ coverage
 
 # Benchmarkings
 benchmarks/graphs
-
-# IntelliJ
-.idea/workspace.xml
 
 # Xcode
 DerivedData/

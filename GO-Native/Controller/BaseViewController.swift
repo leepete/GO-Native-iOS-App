@@ -10,7 +10,7 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController{
     
     private let backgroundImage : UIImageView = {
         let background = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
@@ -20,19 +20,50 @@ class BaseViewController: UIViewController {
         return background
     }()
     
+    // Encases the barbutton
+    private let userProgress: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(openUserProfile), for: .touchUpInside)
+        return button
+    }()
+    
+    private let levelBar: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "progressbar")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
+    private let levelLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.italicSystemFont(ofSize: 10)
+        label.text = "Level 2: Bird Watcher"
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(backgroundImage)
-
+        userProgress.addSubview(levelBar)
+        userProgress.addSubview(levelLabel)
+        levelBar.addSubview(levelLabel)
+        levelBar.anchor(top: userProgress.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        levelLabel.anchor(top: levelBar.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 3, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
         setupNavButtons()
     }
     
     func setupNavButtons() {
         //Nav Bar Buttons
-        let progressBar = UIImage(named: "progressbar")?.withRenderingMode(.alwaysOriginal) //TODO: Make it a proper working one
-        let progressBarButtonItem = UIBarButtonItem(image: progressBar, style:.plain, target: self, action: #selector(openUserProfile))
-        
+        //TODO: Make it a proper working one
+        let progressBarButtonItem = UIBarButtonItem()
+        progressBarButtonItem.customView = userProgress
+        userProgress.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openUserProfile)))
+      
         navigationItem.leftBarButtonItem = progressBarButtonItem
         
         let treeImage = UIImage(named: "tree")?.withRenderingMode(.alwaysOriginal) // Rendering mode removes blue hue
@@ -44,15 +75,15 @@ class BaseViewController: UIViewController {
     }
     
     @objc func goHome() {
-        self.navigationController?.pushViewController(HomeController(), animated: true)
+        self.navigationController?.pushViewController(HomeController(), animated: false)
     }
     
     @objc func addPhoto() {
-        print("ADDING QR CODE/PHOTO")
-         self.navigationController?.pushViewController(AddBirdController(), animated: true) // TEMP
+        print("Opening Camera")
+        self.useCamera()
     }
     @objc func addPhotoAlert() { // TEMP
-        print("ADDING QR CODE/PHOTO")
+        print("Selection Pop-UP")
         self.setupAlertController()
     }
     

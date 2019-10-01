@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization afgit staer application launch.
+        FirebaseApp.configure()
         
-        window =  UIWindow(frame: UIScreen.main.bounds) // a window to hold view controllers
+        window = UIWindow(frame: UIScreen.main.bounds) // a window to hold view controllers
         window?.makeKeyAndVisible()
         
-        window?.rootViewController =  UINavigationController(rootViewController: BirdAddedController())
+        window?.rootViewController = UINavigationController(rootViewController: HomeController())
         
         UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 102, green: 153, blue: 51) // change navbar background colour
         UINavigationBar.appearance().titleTextAttributes =  [NSAttributedString.Key.foregroundColor: UIColor.white] // change title colour
