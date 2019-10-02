@@ -138,7 +138,7 @@ class BirdAddedController: BaseViewController {
         displayBird.addSubview(bottomLabel)
         
         let labelHeight = height/3.5 // About 28% of the height each side
-        topLabel.anchor(top: displayBird.topAnchor, left: displayBird.leftAnchor, bottom: nil, right: displayBird.rightAnchor, paddingTop: labelHeight/4, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        topLabel.anchor(top: displayBird.topAnchor, left: displayBird.leftAnchor, bottom: nil, right: displayBird.rightAnchor, paddingTop: labelHeight/4 - 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         topLabel.center(x: displayBird.centerXAnchor, paddingX: 0, y: nil, paddingY: 0)
 
         birdImage.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: width/2, height: width/2)
@@ -146,7 +146,7 @@ class BirdAddedController: BaseViewController {
 
         pointImage.anchor(top: nil, left: nil, bottom: birdImage.bottomAnchor, right: birdImage.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 60, height: 60)
 
-        bottomLabel.anchor(top: nil, left: displayBird.leftAnchor, bottom: displayBird.bottomAnchor, right: displayBird.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: labelHeight/4, paddingRight: 0, width: 0, height: 0)
+        bottomLabel.anchor(top: nil, left: displayBird.leftAnchor, bottom: displayBird.bottomAnchor, right: displayBird.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: labelHeight/4 - 5, paddingRight: 0, width: 0, height: 0)
     
         
         // Buttons

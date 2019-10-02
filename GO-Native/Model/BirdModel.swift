@@ -71,11 +71,3 @@ struct LocalDatabase: Decodable{
         }.resume()
     }
 }
-
-
-//for deep in getBird.details! {
-//                       for stat in deep.stats! {
-//                          stats = BirdStats(type: stat.type, status: stat.status, habitat: stat.habitat)
-//                       }
-//                       details = BirdDetails(maoriName: deep.maoriName, stats: [stats!], description: deep.description)
-//                   }
