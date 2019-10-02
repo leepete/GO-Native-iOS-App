@@ -1,5 +1,5 @@
-# GO-Native iOS app - (Currently being re-visited)  
-> "It's kinda like Pokemon GO but with Birds!"
+# GO-Native iOS app
+> "Go searching for our wonderful native birds in New Zealand, learn more about them and earn points doing so!"
 
 ## As of 1/10/19
 
@@ -33,13 +33,10 @@ I coded it up in **Swift** (no use of storyboards).
 
 ### Create Camp Team 2018 - Bird Nerds
 
-#### Developers
-* Peter Lee
-* Tu Dinh
-* Abigail Lieshout
-* Carla Weiss
-
-#### Design
-* Kate Bennett
+* Kate Bennett (Designer)
+* Peter Lee (Developer)
+* Tu Dinh (Developer)
+* Abigail Lieshout (Developer)
+* Carla Weiss (Developer)
 
 Our concept video: https://youtu.be/bahKq9MTpak
