@@ -22,7 +22,7 @@ This idea was first created at Summer of Tech Create Camp 2018, and I was inspir
 I coded it all up programmatically in **Swift** (no use of Storyboards).
 
 ## Example
-<img src="Screenshots/app-preview.gif" width="300">
+<img src="Screenshots/app-preview.gif">
 
 
 ## Credits to my cool team that I got to work this idea with (this wouldn't have happened without them)
