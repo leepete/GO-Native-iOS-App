@@ -22,6 +22,7 @@
 		E7AC7B24232CF2A600269808 /* BirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC7B23232CF2A600269808 /* BirdCell.swift */; };
 		E7AC7B26232D1E9000269808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AC7B25232D1E9000269808 /* LaunchScreen.storyboard */; };
 		E7B1EE4123325D810066AAA7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1EE4023325D810066AAA7 /* Extensions.swift */; };
+		E7BD39672346DD150038D521 /* PhotoLibraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD39662346DD150038D521 /* PhotoLibraryController.swift */; };
 		E7C738392334ADF00011E89A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C738382334ADF00011E89A /* HeaderView.swift */; };
 		E7CCA5C621529729004505AD /* BirdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CCA5C521529729004505AD /* BirdModel.swift */; };
 		E7CE5EB4215271E000289731 /* birds_database.json in Resources */ = {isa = PBXBuildFile; fileRef = E7CE5EB3215271E000289731 /* birds_database.json */; };
@@ -47,6 +48,7 @@
 		E7AC7B23232CF2A600269808 /* BirdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdCell.swift; sourceTree = "<group>"; };
 		E7AC7B25232D1E9000269808 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7B1EE4023325D810066AAA7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E7BD39662346DD150038D521 /* PhotoLibraryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryController.swift; sourceTree = "<group>"; };
 		E7C738382334ADF00011E89A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E7CCA5C521529729004505AD /* BirdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdModel.swift; sourceTree = "<group>"; };
 		E7CE5EB3215271E000289731 /* birds_database.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = birds_database.json; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				E735C0B9233390EC0023AB16 /* BaseViewController.swift */,
 				E7AC7B1E232CEEFA00269808 /* HomeController.swift */,
 				E735C0B5233304060023AB16 /* CameraController.swift */,
+				E7BD39662346DD150038D521 /* PhotoLibraryController.swift */,
 				E735C0B723338A930023AB16 /* AddBirdController.swift */,
 				E72B54A32334FCBA005DD8E0 /* BirdAddedController.swift */,
 				E702D7282337D82F0065DCF5 /* BirdInfoController.swift */,
@@ -276,6 +279,7 @@
 				E735C0B823338A930023AB16 /* AddBirdController.swift in Sources */,
 				E729C5FC233B606B0067A28C /* PreviewPhotoContainerView.swift in Sources */,
 				E72B54A42334FCBA005DD8E0 /* BirdAddedController.swift in Sources */,
+				E7BD39672346DD150038D521 /* PhotoLibraryController.swift in Sources */,
 				E7C738392334ADF00011E89A /* HeaderView.swift in Sources */,
 				E702D72B2337D87B0065DCF5 /* InfoDisplay.swift in Sources */,
 				E735C0B6233304060023AB16 /* CameraController.swift in Sources */,

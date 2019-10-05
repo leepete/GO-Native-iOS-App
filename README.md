@@ -19,9 +19,9 @@ An app made to help engage kids with the environment by collecting/finding New Z
 
 This idea was first created at Summer of Tech Create Camp 2018, and I was inspired to keep going with the idea and attempt to making something out of it.
 
-I coded it up in **Swift** (no use of storyboards).
+I coded it all up programmatically in **Swift** (no use of Storyboards).
 
-### Images
+## Images
 ![Alt text](Screenshots/homeScreen.png)
 ![Alt text](Screenshots/cameraRoll.png)
 ![Alt text](Screenshots/imageSelect.png)

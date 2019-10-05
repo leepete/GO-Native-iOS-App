@@ -22,10 +22,10 @@ extension UINavigationController {
 }
 
 extension UIViewController {
-    func setupAlertController() {
+    @objc func setupAlertController() {
         let action = UIAlertController(title: "How would you like to add your bird?", message: "", preferredStyle: .actionSheet)
         action.addAction(UIAlertAction(title: "Use Camera", style: .default, handler: { action in self.useCamera()}))
-        action.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { action in self.addFromCameraRoll()}))
+        action.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { action in self.usePhotoLibrary()}))
         action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(action, animated: true, completion: nil)
     }
@@ -36,14 +36,12 @@ extension UIViewController {
         present(cameraController, animated: true, completion: nil)
     }
     
-    func addFromCameraRoll() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.savedPhotosAlbum) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.modalPresentationStyle = .fullScreen
-            imagePicker.sourceType = UIImagePickerController.SourceType.savedPhotosAlbum
-            imagePicker.allowsEditing = true
-            present(imagePicker, animated: true, completion: nil)
-        }
+    func usePhotoLibrary() {
+        let layout = UICollectionViewFlowLayout()
+        let photoLibraryController = PhotoLibraryController(collectionViewLayout: layout)
+        let navController = UINavigationController(rootViewController: photoLibraryController)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true, completion: nil)
     }
 }
 

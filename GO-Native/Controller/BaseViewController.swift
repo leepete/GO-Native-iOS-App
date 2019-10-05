@@ -82,10 +82,6 @@ class BaseViewController: UIViewController{
         print("Opening Camera")
         self.useCamera()
     }
-    @objc func addPhotoAlert() { // TEMP
-        print("Selection Pop-UP")
-        self.setupAlertController()
-    }
     
     @objc func openUserProfile() {
         print("OPENED USER INFO")

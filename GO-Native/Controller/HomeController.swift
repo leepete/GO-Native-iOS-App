@@ -60,7 +60,7 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
         setupLayout()
         
         // Make Bird Button work
-        addBirdButton.addTarget(self, action: #selector(addPhotoAlert), for: .touchUpInside)
+        addBirdButton.addTarget(self, action: #selector(setupAlertController), for: .touchUpInside)
         
         // Register bird cells
         collectionView.register(BirdCell.self, forCellWithReuseIdentifier: cellId)
