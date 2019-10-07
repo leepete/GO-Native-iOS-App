@@ -10,6 +10,7 @@
 		7FCA46C28454103D80B3B02A /* Pods_GO_Native.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F8F21D1C31236C6F3F0493 /* Pods_GO_Native.framework */; };
 		E702D7292337D82F0065DCF5 /* BirdInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E702D7282337D82F0065DCF5 /* BirdInfoController.swift */; };
 		E702D72B2337D87B0065DCF5 /* InfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E702D72A2337D87B0065DCF5 /* InfoDisplay.swift */; };
+		E70C1A54234B595C0099FB61 /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70C1A53234B595C0099FB61 /* PhotoLibraryView.swift */; };
 		E729C5FA233B368B0067A28C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E729C5F9233B368A0067A28C /* GoogleService-Info.plist */; };
 		E729C5FC233B606B0067A28C /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729C5FB233B606B0067A28C /* PreviewPhotoContainerView.swift */; };
 		E72B54A42334FCBA005DD8E0 /* BirdAddedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B54A32334FCBA005DD8E0 /* BirdAddedController.swift */; };
@@ -34,6 +35,7 @@
 		C637D2C8DB5E9530094307F1 /* Pods-GO-Native.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GO-Native.release.xcconfig"; path = "Target Support Files/Pods-GO-Native/Pods-GO-Native.release.xcconfig"; sourceTree = "<group>"; };
 		E702D7282337D82F0065DCF5 /* BirdInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdInfoController.swift; sourceTree = "<group>"; };
 		E702D72A2337D87B0065DCF5 /* InfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDisplay.swift; sourceTree = "<group>"; };
+		E70C1A53234B595C0099FB61 /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
 		E729C5F9233B368A0067A28C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E729C5FB233B606B0067A28C /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
 		E72B54A32334FCBA005DD8E0 /* BirdAddedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdAddedController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				E7C738382334ADF00011E89A /* HeaderView.swift */,
 				E702D72A2337D87B0065DCF5 /* InfoDisplay.swift */,
 				E729C5FB233B606B0067A28C /* PreviewPhotoContainerView.swift */,
+				E70C1A53234B595C0099FB61 /* PhotoLibraryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E70C1A54234B595C0099FB61 /* PhotoLibraryView.swift in Sources */,
 				E735C0B823338A930023AB16 /* AddBirdController.swift in Sources */,
 				E729C5FC233B606B0067A28C /* PreviewPhotoContainerView.swift in Sources */,
 				E72B54A42334FCBA005DD8E0 /* BirdAddedController.swift in Sources */,

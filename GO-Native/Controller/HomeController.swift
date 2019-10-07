@@ -75,7 +75,6 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
     
     func readData(completionHandler: @escaping ([Bird]) -> Void) {
         var allBirds = [Bird]()
-        
         ref = Database.database().reference()
         databaseHandle = ref?.child("birds").observe(.childAdded, with: {(snapshot) in
             guard let post = snapshot.value as? Dictionary<String,Any> else { return }
@@ -109,7 +108,7 @@ class HomeController: BaseViewController, UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if postData.count > 0 {
              for subview in self.view.subviews {
-                if(subview.restorationIdentifier == "getExploring"){ // TEMP HACK
+                if(subview.restorationIdentifier == "getExploring"){ // TOFIX
                         subview.removeFromSuperview()
                 }
             }

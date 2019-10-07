@@ -7,33 +7,73 @@
 //
 
 import UIKit
+import Photos // Photos Framework to fetch photos
 
 class PhotoLibraryController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private let cellId = "cellId"
     private let headerId = "headerId"
     
+    var selectedImage: UIImage? // Current selected image
+    var images = [UIImage]() // Smaller sized Images
+    var assets = [PHAsset]() // Original Sized Images
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = .yellow
-        
         setupNavigationController()
         
-        collectionView?.register(PhotoLibraryCellView.self, forCellWithReuseIdentifier: cellId)
+        collectionView.backgroundColor = .white
+        
+        collectionView?.register(PhotoLibraryCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(PhotoLibraryHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
+        fetchPhotos()
+    }
+        
+    fileprivate func assetFetchOptions() -> PHFetchOptions {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.fetchLimit = 30
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false) // sort images in descending order
+        fetchOptions.sortDescriptors = [sortDescriptor]
+        return fetchOptions
+    }
+    
+    fileprivate func fetchPhotos() {
+        let allPhotos = PHAsset.fetchAssets(with: .image, options: assetFetchOptions())
+        
+        DispatchQueue.global(qos: .background).async { // Load it up in the "background thread" to reduce hanging time
+            allPhotos.enumerateObjects { (asset, count, stop) in
+                let imageManager = PHImageManager.default()
+                let targetSize = CGSize(width: 200, height: 200) // Initial Image size - have to re-fetch for larger size
+                let options = PHImageRequestOptions()
+                options.isSynchronous = true
+                imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options) {  (image, info) in
+                    if let image = image {
+                        self.images.append(image)
+                        self.assets.append(asset) // For original sized images
+                           
+                        // Select first image (will go through each enumeration) to be the selected image
+                        if self.selectedImage == nil {
+                            self.selectedImage = image
+                        }
+                    }
+                    if count == allPhotos.count - 1 {
+                        DispatchQueue.main.async { // Get back on the "main thread"
+                            self.collectionView?.reloadData()
+                        }
+                    }
+                }
+           }
+        }
     }
     
     fileprivate func setupNavigationController() {
         navigationItem.title = "Camera roll"
-         
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        cancelButton.tintColor = .black
-        let nextButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
+        navigationController?.navigationBar.tintColor = .black
         
-        navigationItem.leftBarButtonItem = cancelButton
-        navigationItem.rightBarButtonItem = nextButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
     }
     
     @objc func handleCancel() {
@@ -45,10 +85,40 @@ class PhotoLibraryController: UICollectionViewController, UICollectionViewDelega
     }
     
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) //TOFIX
+        cell?.alpha = 0.6
+        
+        self.selectedImage = images[indexPath.item]
+        collectionView.reloadData() // make the CV redraw itself/refresh
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.alpha = 1.0
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     // Header
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
-        header.backgroundColor = .green
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoLibraryHeaderView
+        header.photoImageView.image = selectedImage
+        
+        // re-fetching to get larger image size
+        if let selectedImage = selectedImage {
+            if let index = self.images.firstIndex(of: selectedImage) {
+                let selectedAsset = self.assets[index]
+                let imageManager = PHImageManager.default()
+                let targetSize = CGSize(width: 600, height: 600) //larger size
+                imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .aspectFill, options: nil) { (image, info) in  // Pull request the larger sized image
+                    header.photoImageView.image = image
+                }
+            }
+        }
         return header
     }
     
@@ -59,83 +129,37 @@ class PhotoLibraryController: UICollectionViewController, UICollectionViewDelega
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 16
+        return images.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PhotoLibraryCell
+        cell.photoImageView.image = images[indexPath.item]
+        
+//        if indexPath.item == 0 {
+//            cell.alpha = 0.6 // First image is always selected on present
+//        }
+        
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.width/4 - 2
+        let width = view.frame.width/4 - 1
         return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return 1
     }
     
     // Left and Right between cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return 1
     }
     
-    
-}
-
-
-class PhotoLibraryCellView: UICollectionViewCell {
-    var birdInstance: Bird? {
-        didSet{
-            if let imageName = birdInstance?.name {
-                imageView.image = UIImage(named: imageName.lowercased())
-            }
-        }
+    // Padding
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
     }
-    
-    fileprivate let imageView: UIImageView = {
-        let imageView = UIImageView(image:#imageLiteral(resourceName: "tui"))
-        imageView.image = UIImage(named: "kea") //temp
-        return imageView
-    }()
-            
-    
-    override init(frame: CGRect) {
-         super.init(frame: frame)
-         
-         addSubview(imageView)
-         
-         imageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-     }
-     
-     required init?(coder: NSCoder) {
-         fatalError("init(coder:) has not been implemented")
-     }
-    
-}
 
-
-class PhotoLibraryHeaderView: UICollectionReusableView {
-    
-    private let imageView: UIImageView = {
-       let imageView = UIImageView()
-        imageView.image = UIImage(named: "tui")
-        return imageView
-    }()
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        addSubview(imageView)
-        
-        imageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-    
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

@@ -38,6 +38,7 @@ extension UIViewController {
     
     func usePhotoLibrary() {
         let layout = UICollectionViewFlowLayout()
+        layout.sectionHeadersPinToVisibleBounds = true // Header will not move when scrolling
         let photoLibraryController = PhotoLibraryController(collectionViewLayout: layout)
         let navController = UINavigationController(rootViewController: photoLibraryController)
         navController.modalPresentationStyle = .fullScreen
