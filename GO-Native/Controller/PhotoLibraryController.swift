@@ -15,6 +15,7 @@ class PhotoLibraryController: UICollectionViewController, UICollectionViewDelega
     private let headerId = "headerId"
     
     var selectedImage: UIImage? // Current selected image
+    var cellSelectedIndex = 0 // Selected Cell index - default is 0 (first cell)
     var images = [UIImage]() // Smaller sized Images
     var assets = [PHAsset]() // Original Sized Images
     
@@ -33,7 +34,7 @@ class PhotoLibraryController: UICollectionViewController, UICollectionViewDelega
         
     fileprivate func assetFetchOptions() -> PHFetchOptions {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.fetchLimit = 30
+        fetchOptions.fetchLimit = 30 // TEMP
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false) // sort images in descending order
         fetchOptions.sortDescriptors = [sortDescriptor]
         return fetchOptions
@@ -81,22 +82,18 @@ class PhotoLibraryController: UICollectionViewController, UICollectionViewDelega
     }
     
     @objc func handleNext() {
-        print("SENDING IMAGE OVER")
+        let nextViewController = AddBirdController()
+        nextViewController.receivedImage = selectedImage
+        navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) //TOFIX
-        cell?.alpha = 0.6
+        cellSelectedIndex = indexPath.item // keep track of indexPath
         
-        self.selectedImage = images[indexPath.item]
-        collectionView.reloadData() // make the CV redraw itself/refresh
+        self.selectedImage = images[cellSelectedIndex] // set image
         
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.alpha = 1.0
+        collectionView.reloadData() // make the CollectionView redraw itself/refresh so it shows the selectedImage in header
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -131,15 +128,20 @@ class PhotoLibraryController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PhotoLibraryCell
         cell.photoImageView.image = images[indexPath.item]
         
-//        if indexPath.item == 0 {
-//            cell.alpha = 0.6 // First image is always selected on present
-//        }
-        
+        // Selection Highlighting
+        if indexPath.item == 0 && cellSelectedIndex == 0 { // when presented, "highlight" first cell
+            cell.photoImageView.alpha = 0.5
+        } else if indexPath.item == cellSelectedIndex { // select other images
+            cell.photoImageView.alpha = 0.5
+        } else { // deselect images
+            cell.photoImageView.alpha = 1.0
+        }
+
         return cell
     }
 
